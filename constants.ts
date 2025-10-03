@@ -1,16 +1,9 @@
 
 import type { Agent } from './types';
 import { AgentName, TaskStatus } from './types';
-import { ChatGptIcon, DeepSeekIcon, ComputerXIcon, GoogleAiIcon } from './components/icons';
+import { DeepSeekIcon, ComputerXIcon, GoogleAiIcon } from './components/icons';
 
 export const AGENTS: Agent[] = [
-  { 
-    name: AgentName.ChatGPT, 
-    role: "Documentation & Architecture", 
-    repoFolder: "docs/", 
-    color: "bg-green-500/20 text-green-400",
-    icon: ChatGptIcon 
-  },
   { 
     name: AgentName.DeepSeek, 
     role: "Algorithms & Pricing Engine", 

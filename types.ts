@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 export enum AgentName {
-  ChatGPT = "ChatGPT",
   DeepSeek = "DeepSeek",
   ComputerX = "ComputerX AI",
   GoogleAI = "Google AI Studio",

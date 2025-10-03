@@ -20,19 +20,11 @@ export const callAI = async (agentName: AgentName, taskTitle: string, taskDescri
 
     try {
         switch (agentName) {
-            case "ChatGPT": // Replaced OpenAI with Gemini for documentation
-                const geminiResponseDocs = await ai.models.generateContent({
-                    model: "gemini-2.5-flash",
-                    contents: `Generate documentation and architecture notes for the following task.\n${prompt}`,
-                });
-                content = geminiResponseDocs.text;
-                break;
-
             case "DeepSeek":
                 const deepSeekResponse = await axios.post("https://api.deepseek.com/v1/chat/completions", {
                     model: "deepseek-coder",
                     messages: [{ role: "user", content: `Generate an algorithm or backend code for the following task.\n${prompt}` }],
-                }, { headers: { "Authorization": `Bearer ${API_KEYS.DEEPSEEK}` } });
+                }, { headers: { "Authorization": `Bearer ${API_KEYS.DEEPSEEK}`, "Content-Type": "application/json" } });
                 content = deepSeekResponse.data.choices[0].message.content;
                 break;
 

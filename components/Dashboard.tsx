@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, addDoc, query, onSnapshot, orderBy, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, query, onSnapshot, orderBy, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { Header } from './Header';
 import { KanbanBoard } from './KanbanBoard';
@@ -67,7 +67,6 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
       await updateDoc(taskDocRef, { progress: 50, progressStatus: "📦 Committing to GitHub..." });
       const sanitizedTitle = title.toLowerCase().replace(/\s+/g, "-");
       const agentPaths: { [key: string]: string } = {
-        "ChatGPT": `docs/${sanitizedTitle}-${taskId}.md`,
         "DeepSeek": `backend/${sanitizedTitle}-${taskId}.js`,
         "ComputerX AI": `tests/${sanitizedTitle}-${taskId}.test.js`,
         "Google AI Studio": `.github/workflows/${sanitizedTitle}-${taskId}.yml`,
@@ -94,14 +93,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
     } catch (error: any) {
       console.error(`Error processing task ${taskId}:`, error);
       const errorMessage = error.message || "An unknown error occurred.";
-      await updateDoc(taskDocRef, { 
-        status: TaskStatus.Backlog, 
-        error: errorMessage, 
-        progress: 0,
-        progressStatus: "" 
-      });
-      await addLog(`Failed to process task "${title}": ${errorMessage}`, LogType.System, { agentName });
-      showToast(`Task "${title}" failed: ${errorMessage}`, 'error');
+      
+      // Delete the failed task
+      await deleteDoc(taskDocRef);
+      
+      await addLog(`Failed to process task "${title}" and removed it: ${errorMessage}`, LogType.System, { agentName });
+      showToast(`Task "${title}" failed and was removed.`, 'error');
     }
   };
 
