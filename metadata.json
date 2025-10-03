@@ -1,0 +1,5 @@
+{
+  "name": "AI Collaboration Hub",
+  "description": "An application to orchestrate collaboration between multiple AI agents for a complete software development lifecycle, from documentation to deployment. It features a Kanban-style dashboard to manage tasks, assign them to specialized AI agents, and monitor the automated workflow in real-time.",
+  "requestFramePermissions": []
+}
