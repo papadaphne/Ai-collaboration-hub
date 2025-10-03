@@ -66,10 +66,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ user, onLogout }) => {
       // Step 3: Committing to GitHub
       await updateDoc(taskDocRef, { progress: 50, progressStatus: "📦 Committing to GitHub..." });
       const sanitizedTitle = title.toLowerCase().replace(/\s+/g, "-");
-      const agentPaths: { [key: string]: string } = {
-        "DeepSeek": `backend/${sanitizedTitle}-${taskId}.js`,
-        "ComputerX AI": `tests/${sanitizedTitle}-${taskId}.test.js`,
-        "Google AI Studio": `.github/workflows/${sanitizedTitle}-${taskId}.yml`,
+      const agentPaths: { [key in AgentName]: string } = {
+        "Architect AI": `docs/${sanitizedTitle}-spec-${taskId}.md`,
+        "Developer AI": `src/features/${sanitizedTitle}/${taskId}.ts`,
+        "QA AI": `tests/unit/${sanitizedTitle}-${taskId}.test.js`,
       };
       const filePath = agentPaths[agentName];
       const commitUrl = await commitToGitHub(filePath, aiContent, `feat: ${title} by ${agentName} (#${taskId})`);

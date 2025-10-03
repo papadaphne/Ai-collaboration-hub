@@ -6,8 +6,7 @@
 
 // Instructions:
 // 1. Get your Google AI key from Google AI Studio.
-// 2. Get your DeepSeek API key from the DeepSeek platform.
-// 3. Create a GitHub Personal Access Token with `repo` permissions.
+// 2. Create a GitHub Personal Access Token with `repo` permissions.
 
 export const GITHUB_CONFIG = {
   TOKEN: "YOUR_GITHUB_PERSONAL_ACCESS_TOKEN", // e.g., ghp_...
@@ -16,7 +15,5 @@ export const GITHUB_CONFIG = {
 };
 
 export const API_KEYS = {
-  // OpenAI key removed as requested.
-  DEEPSEEK: "YOUR_DEEPSEEK_API_KEY",
   GOOGLE: "YOUR_GOOGLE_AI_API_KEY",
 };

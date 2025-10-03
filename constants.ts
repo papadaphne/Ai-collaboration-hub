@@ -1,29 +1,29 @@
 
 import type { Agent } from './types';
 import { AgentName, TaskStatus } from './types';
-import { DeepSeekIcon, ComputerXIcon, GoogleAiIcon } from './components/icons';
+import { ArchitectIcon, DeveloperIcon, QaIcon } from './components/icons';
 
 export const AGENTS: Agent[] = [
   { 
-    name: AgentName.DeepSeek, 
-    role: "Algorithms & Pricing Engine", 
-    repoFolder: "backend/", 
+    name: AgentName.Architect, 
+    role: "System Design & Documentation", 
+    repoFolder: "docs/", 
     color: "bg-blue-500/20 text-blue-400",
-    icon: DeepSeekIcon
+    icon: ArchitectIcon
   },
   { 
-    name: AgentName.ComputerX, 
-    role: "Automated Testing & QA", 
-    repoFolder: "tests/", 
+    name: AgentName.Developer, 
+    role: "Core Feature Implementation", 
+    repoFolder: "src/", 
     color: "bg-purple-500/20 text-purple-400",
-    icon: ComputerXIcon
+    icon: DeveloperIcon
   },
   { 
-    name: AgentName.GoogleAI, 
-    role: "Orchestration & Deployment", 
-    repoFolder: ".github/workflows/", 
+    name: AgentName.QA, 
+    role: "Automated Testing & Quality", 
+    repoFolder: "tests/", 
     color: "bg-yellow-500/20 text-yellow-400",
-    icon: GoogleAiIcon
+    icon: QaIcon
   },
 ];
 

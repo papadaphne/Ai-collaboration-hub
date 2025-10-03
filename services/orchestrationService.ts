@@ -1,7 +1,6 @@
 // src/services/orchestrationService.ts
 import { GoogleGenAI } from "@google/genai";
 import { Octokit } from "@octokit/rest";
-import axios from "axios";
 import { Buffer } from "buffer";
 import { API_KEYS, GITHUB_CONFIG } from '../aiConfig';
 import type { AgentName } from '../types';
@@ -19,29 +18,30 @@ export const callAI = async (agentName: AgentName, taskTitle: string, taskDescri
     let content: string;
 
     try {
+        let response;
         switch (agentName) {
-            case "DeepSeek":
-                const deepSeekResponse = await axios.post("https://api.deepseek.com/v1/chat/completions", {
-                    model: "deepseek-coder",
-                    messages: [{ role: "user", content: `Generate an algorithm or backend code for the following task.\n${prompt}` }],
-                }, { headers: { "Authorization": `Bearer ${API_KEYS.DEEPSEEK}`, "Content-Type": "application/json" } });
-                content = deepSeekResponse.data.choices[0].message.content;
+            case "Architect AI":
+                response = await ai.models.generateContent({
+                    model: "gemini-2.5-flash",
+                    contents: `Generate a technical specification document in Markdown for the following software task.\n${prompt}`,
+                });
+                content = response.text;
                 break;
 
-            case "ComputerX AI":
-                const geminiResponseQA = await ai.models.generateContent({
+            case "Developer AI":
+                response = await ai.models.generateContent({
                     model: "gemini-2.5-flash",
-                    contents: `Generate a QA test plan and automated test scripts for the following task.\n${prompt}`,
+                    contents: `Generate the primary source code (e.g., TypeScript/React or Python) to implement the following task.\n${prompt}`,
                 });
-                content = geminiResponseQA.text;
+                content = response.text;
                 break;
             
-            case "Google AI Studio":
-                const geminiResponseCiCd = await ai.models.generateContent({
+            case "QA AI":
+                response = await ai.models.generateContent({
                     model: "gemini-2.5-flash",
-                    contents: `Generate a GitHub Actions workflow file (.yml) for CI/CD related to the following task.\n${prompt}`,
+                    contents: `Generate automated test scripts (e.g., using Jest or Pytest) for the following software task.\n${prompt}`,
                 });
-                content = geminiResponseCiCd.text;
+                content = response.text;
                 break;
 
             default:

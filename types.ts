@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 export enum AgentName {
-  DeepSeek = "DeepSeek",
-  ComputerX = "ComputerX AI",
-  GoogleAI = "Google AI Studio",
+  Architect = "Architect AI",
+  Developer = "Developer AI",
+  QA = "QA AI",
 }
 
 export enum TaskStatus {

@@ -22,16 +22,21 @@ export const PlusIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-export const DeepSeekIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-        <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm-1.06 12.35L15.5 12 10.94 8.65l-4.56 3.35 4.56 3.35zM12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14z" />
+export const ArchitectIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
     </svg>
 );
 
-export const ComputerXIcon = (props: React.SVGProps<SVGSVGElement>) => (
+export const DeveloperIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}>
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m16-6h-2m2 6h-2M12 5V3m0 18v-2" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 17a5 5 0 100-10 5 5 0 000 10z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+    </svg>
+);
+
+export const QaIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
     </svg>
 );
 
